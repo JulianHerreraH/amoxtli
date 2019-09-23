@@ -1,0 +1,26 @@
+{% extends "store/base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+
+<section class="section-content  padding-y fill-screen"> 
+        <div class="card m-5 p-1">
+                <header class="card-header text-center border">
+                    <h4 class="card-title mt-2 ">Información de  Tarjeta </h4>
+                </header>
+                <article class="card-body p-2">
+                    <form method="POST"> 
+                        {% csrf_token %}
+                        <fieldset class="form-group"> 
+                            {{ cForm | crispy }}
+                        </fieldset>
+                        <hr>
+                        <div class="form-group">
+                                <button type="submit" class="btn btn-primary btn-block"> Actualizar</button>
+                        </div> <!-- form-group// -->         
+                    </form>
+                </article> <!-- card-body end .// -->    
+            </div> <!-- card.// -->
+</section>
+
+{% endblock content %}

@@ -1,0 +1,189 @@
+{% extends "store/base.html" %}
+{% load static %}
+{% block content %}
+
+
+    <div class="container">
+        
+        <div class="row">
+             <!--Carousel Wrapper-->
+            <div id="carousel-example-2" class="carousel slide carousel-fade" data-ride="carousel">
+                <!--Indicators-->
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-example-2" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-example-2" data-slide-to="1"></li>
+                    <li data-target="#carousel-example-2" data-slide-to="2"></li>
+                </ol>
+                <!--/.Indicators-->
+                <!--Slides-->
+                <div class="carousel-inner" role="listbox">
+                    <div class="carousel-item active pt-5">
+                        <div class="view">
+                                <img class="carousel-image d-block w-100" src="https://gdurl.com/wsZr"alt="First slide">
+                            <div class="mask rgba-black-light"></div>
+                        </div>
+                        <div class="carousel-caption">
+                            <h3 class="h3-responsive">Conoce los descuentos</h3>
+                            
+                        </div>
+                    </div>
+                    <div class="carousel-item pt-5">
+                        <!--Mask color-->
+                        <div class="view">
+                                <img class="d-block w-100 carousel-image" src="https://gdurl.com/JDTt" alt="Second slide">
+                            <div class="mask rgba-black-strong"></div>
+                        </div>
+                        <div class="carousel-caption">
+                            <h3 class="h3-responsive">Compra Aquí</h3>
+                            
+                        </div>
+                    </div>
+                    <div class="carousel-item pt-5">
+                        <!--Mask color-->
+                        <div class="view">
+                            <img class=" carousel-image d-block w-100 " src="https://gdurl.com/2WEL"
+                                alt="Third slide">
+                            <div class="mask rgba-black-slight"></div>
+                        </div>
+                        <div class="carousel-caption">
+                            <h3 class="h3-responsive">Compra aquí</h3>
+                        </div>
+                    </div>
+                </div>
+                <!--/.Slides-->
+                <!--Controls-->
+                <a class="carousel-control-prev" href="#carousel-example-2" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carousel-example-2" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+                <!--/.Controls-->
+            </div>
+            <!--/.Carousel Wrapper-->
+
+        </div> <!-- row.// -->
+              
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Libros <b>Nuevos</b></h2>
+                <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
+                    <!-- Carousel indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1"></li>
+                    </ol>   
+                    <!-- Wrapper for carousel items -->
+                    <div class="carousel-inner">
+                        <div class="item carousel-item active">
+                            <div class="row">
+                                {% for book in booksFirst|slice:"3" %}
+                                            <div class="col-sm-3 carousel-item-size">
+                                                    <div class="thumb-wrapper">
+                                                        <span class="wish-icon"><i class="fa fa-heart-o"></i></span>
+                                                        <div class="img-box">
+                                                            <img src="{% if book.image %} {{ book.image.url }} {% else %} https://gdurl.com/akGF {% endif %}" class="img-responsive img-fluid" alt="">
+                                                        </div>
+                                                        <div class="thumb-content">
+                                                            <h4><a href="{{ book.get_absolute_url }}">{{ book.title }} </a></h4>
+                                                            <p class="item-price"><strike>${{book.getOldPrice}}</strike> <span>${{book.price}}</span></p>
+                                                         
+                                                            <a href="{{ book.get_absolute_url }}" class="btn btn-primary text-center"> <i class="fa fa-pen" aria-hidden="true"></i> Ver </a>
+                                                        </div>						
+                                                    </div>
+                                            </div>
+                                        
+                                    {% endfor %}
+                            </div>
+                        </div>
+                        <div class="item carousel-item">
+                            <div class="row">
+                                    {% for book in booksLast|slice:"3" %}
+                                    <div class="col-sm-3 carousel-item-size">
+                                            <div class="thumb-wrapper">
+                                                <span class="wish-icon"><i class="fa fa-heart-o"></i></span>
+                                                <div class="img-box">
+                                                    <img src="{% if book.image %} {{ book.image.url }} {% else %} https://gdurl.com/akGF  {% endif %}" class="img-responsive img-fluid" alt="">
+                                                </div>
+                                                <div class="thumb-content">
+                                                        <h4><a href="{{ book.get_absolute_url }}">{{ book.title }} </a></h4>
+                                                    <p class="item-price"><strike>${{book.getOldPrice}}</strike> <span>${{book.price}}</span></p>
+                                                 
+                                                    <a href="{{ book.get_absolute_url }}" class="btn btn-primary text-center"> <i class="fa fa-pen" aria-hidden="true"></i> Ver </a>
+                                                </div>						
+                                            </div>
+                                    </div>
+                                
+                            {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Carousel controls -->
+                    <a class="carousel-control left carousel-control-prev" href="#myCarousel" data-slide="prev">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a class="carousel-control right carousel-control-next" href="#myCarousel" data-slide="next">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+                <div class="col-md-12">
+                    <h2>Más<b> Baratos</b></h2>
+                    <div id="myCarousel2" class="carousel slide" data-ride="carousel" data-interval="0">
+             
+                        
+                        <!-- Wrapper for carousel items -->
+                        <div class="carousel-inner">
+                            <div class="item carousel-item active">
+                                <div class="row">
+                                    {% for book in booksPrice|slice:"3"%}
+                                            
+                                            <div class="col-sm-3 carousel-item-size">
+                                                    <div class="thumb-wrapper"> 
+                                                        <span class="wish-icon"><i class="fa fa-heart-o"></i></span>
+                                                        <div class="img-box">
+                                                            <img src="{% if book.image %} {{ book.image.url }} {% else %} https://gdurl.com/akGF  {% endif %}" class="img-responsive img-fluid" alt="">
+                                                        </div>
+                                                        <div class="thumb-content">
+                                                            <h4><a href="{{ book.get_absolute_url }}">{{ book.title }} </a></h4>
+                                                            <p class="item-price"><strike>${{book.getOldPrice}}</strike> <span>${{book.price}}</span></p>
+                                                            
+                                                           
+                                                            <a href="{{ book.get_absolute_url }}" class="btn btn-primary text-center"> <i class="fa fa-pen" aria-hidden="true"></i> Ver </a>
+                                                       
+                                                            
+                                                        </div>						
+                                                    </div>
+                                            </div>
+                                            
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            
+                        </div>
+                       
+                        </a>
+                    </div>
+                </div>
+            </div>
+    </div> <!-- container .//  -->
+
+
+
+
+<script type="text/javascript">
+	
+		$(".wish-icon i").click(function(){
+			$(this).toggleClass("fa-heart fa-heart-o");
+		});
+	
+</script>
+
+{% endblock content %}
+
+
