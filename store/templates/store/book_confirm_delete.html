@@ -1,0 +1,33 @@
+{% extends "store/base.html" %}
+{% load static %}
+{% block content %}
+
+<section class="section-content  padding-y fill-screen"> 
+    <br>
+    <br>
+    <br>
+        <div class="card m-5 p-3">
+                <header class="card-header text-center border">
+                    <h4 class="card-title mt-2">Eliminar Libro</h4>
+                </header>
+                <article class="card-body p-2">
+                    <form method="POST"> 
+                        {% csrf_token %}
+                        <fieldset class="form-group"> 
+                        <h3 class="display-4 text-center">¿Estas seguro que deseas eliminar el libro "{{ object.title}}"? </h3>
+                        </fieldset>
+                        <br>
+                        <hr>
+                        <br>
+                        <div class="form-group">
+                                <button type="submit" class="btn btn-outline-danger btn-block"> Sí, eliminar </button>
+                                <br>
+                                
+                                <a  class="btn btn-outline-secondary btn-block" href="{% url 'store:store-detail' object.id %}"> Cancelar </a>
+                        </div> <!-- form-group// -->         
+                    </form>
+                </article> <!-- card-body end .// -->    
+            </div> <!-- card.// -->
+</section>
+
+{% endblock content %}

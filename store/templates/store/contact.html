@@ -1,0 +1,70 @@
+{% extends "store/base.html" %}
+{% load static %}
+{% block content %}
+
+<section class="section-content  bg padding-y fill-screen">
+    
+    
+    <div class="row mt-5" id="contact">
+      
+        <div class="col-md-4 pl-5 pt-5 border-right">
+                    <h2 class="text-uppercase text-left mt-3 font-weight-bold ">Envía un Mensaje</h2>
+                    <form action="">
+                       
+
+                        <div class="form-group ">
+                            <label>Nombre(s)</label>
+                            <input type="text" class="form-control shadow-sm" placeholder="Juan" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Apellido(s)</label>
+                            <input type="text" class="form-control shadow-sm" placeholder="Lopez" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Correo Electronico</label>
+                            <input type="email" class="form-control shadow-sm" placeholder="ejemplo@gmail.com" required>
+                        </div>
+                        
+
+                        <div class="form-group">
+                                <label>Telefono</label>
+                            <input type="number" class="form-control shadow-sm" placeholder="Telefono" required>
+                        </div>
+
+
+                        <div class="form-group">
+                                <label>Escribe tu mensaje</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1"
+                                placeholder="Mensaje..." rows="5" required></textarea>
+                        </div>
+
+
+                        <div class="col-12">
+                            <button class="btn btn-primary btn-block" type="submit">Enviar</button>
+                        </div>
+        </div>
+            
+        <div class="col-md-8 pr-5 pt-5">
+            <h2 class="text-uppercase text-right mt-3 font-weight-bold ">Amoxtli</h2>
+            <div class="text-right lead">
+                <i class="fa fa-phone mt-3"></i> <a href="tel:+">(+39) 123456</a><br>
+                <i class="fa fa-envelope mt-3"></i> <a href="">amoxtl1@gmail.com</a><br>
+                <i class="fa fa-globe mt-3"></i> María Auxiliadora 7, San Bartolo el Chico, CDMX<br>
+                <br>
+                <br>
+                <i class="fab fa-twitter m-3"></i> <a href="">@Amoxtli</a><br>
+                <i class="fab fa-facebook m-3"></i> <a href="">Amoxtli Oficial</a><br>
+                <i class="fab fa-youtube m-3"></i> <a href="">Amoxtli YT</a><br>
+                <i class="fab fa-instagram m-3"></i> <a href="">@Amoxtli_Oficial</a><br>
+             
+                
+            </div>
+        </div>
+
+       
+    </div>
+    </div>
+  
+</section>
+
+{% endblock content %}

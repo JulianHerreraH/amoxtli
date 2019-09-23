@@ -1,0 +1,49 @@
+{% extends "store/base.html" %}
+{% load static %}
+{% block content %}
+
+<section class="section-content  padding-y fill-screen">
+    <div class="m-5">
+        <h6 class="display-4 text-center m-5 font-weight-bold"> Guía de Calidad</h6>
+        <table class="table table-bordered">
+            <thead>
+                <tr class="lead">
+                    <th>Estado del Libro</th>
+                    <th>Clasificación</th>
+                    <th>Precio</th>
+                </tr>
+            </thead>
+            <tbody class="lead">
+                <tr>
+                    <td>Seminuevo, sin rayones, manchas, con todas las páginas y en buenas condiciones.</td>
+                    <td>Libro excelente.</td>
+                    <td>15% menos del precio original.</td>
+                </tr>
+                <tr>
+                    <td>Rayones</td>
+                    <td>Libro estándar.</td>
+                    <td>20% menos del precio original.</td>
+                </tr>
+                <tr>
+                    <td>Manchas</td>
+                    <td>Libro estándar.</td>
+                    <td>20% menos del precio original.</td>
+                </tr>
+                <tr>
+                    <td>Falta de páginas</td>
+                    <td>Libro incompleto.</td>
+                    <td>40% menos del precio original.</td>
+                </tr>
+                <tr>
+                    <td>Parcialmente roto</td>
+                    <td>Libro incompleto.</td>
+                    <td>50% menos del precio original.</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class=" text-center lead"><a href="{% url 'store:store-contact'%}" class="text-primary">¿Tienes otra pregunta?</a></p>
+    </div>
+</section>
+
+
+{% endblock content %}

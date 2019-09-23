@@ -1,0 +1,29 @@
+{% extends "store/base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+
+<section class="section-content  padding-y fill-screen"> 
+     <a href="{% url 'store:store-guide' %}"> <h3 class="text-center text-danger"> Antes de publicar un libro revisa la guias de calidad  </h3></a>
+        <div class="card m-5 p-1">
+                <header class="card-header text-center border">
+                    <h4 class="card-title mt-2">Crear Libro</h4>
+                </header>
+                <article class="card-body p-2">
+                    <form method="POST" enctype="multipart/form-data"> 
+                        {% csrf_token %}
+                        <fieldset class="form-group"> 
+                            {{ form | crispy }}
+                           
+                        </fieldset>
+                        <hr>
+                        <div class="form-group">
+                                <button type="submit" class="btn btn-primary btn-block"> Crear Libro </button>
+                        </div> <!-- form-group// -->         
+                    </form>
+                </article> <!-- card-body end .// -->    
+            </div> <!-- card.// -->
+        <a href="{% url 'store:store-guide' %}"> <h3 class="text-center text-danger"> Antes de publicar un libro revisa la guias de calidad  </h3></a>
+</section>
+
+{% endblock content %}

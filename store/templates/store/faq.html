@@ -1,0 +1,31 @@
+{% extends "store/base.html" %}
+{% load static %}
+{% block content %}
+
+    <section class="section-content  padding-y fill-screen">
+        <div class="container mt-5 ">
+            <h1 class="text-center display-4">Preguntas Frecuentes</h1>
+            <br>
+            <br>
+              <h6 class="text-left font-weight-bold" >1. ¿Cómo funciona Amoxtli?</h6>
+              <p class="text-justify lead">Amoxtli es una platafroma para vender y comprar libros usados. Si deseas vender solo crea una cuenta y sube un libro. Si quieres comprar crea una cuenta y agrega libros a tu carrito. </p>
+              <h6 class="text-left font-weight-bold" >2. ¿Amoxtli es seguro? </h6>
+              <p class="text-justify lead">¡Totalmente! Contamos con el respaldo y apoyo de instituciones educativas de renombre como lo son el Instituto Tecnológico y de Estudios Superiores de Monterrey. </p>
+              <h6 class="text-left font-weight-bold">3. ¿Tiene algún costo utilizar la plataforma?</h6>
+              <p class="text-justify lead">No hay costo alguno por utilizar la plataforma o por anunciar tu libro. Nosotros solo nos quedaremos con un 15% de comisión de cada una de las ventas.</p>
+              <h6 class="text-left font-weight-bold">4. Seleccione envio ¿En cuánto tiempo llegaría mi compra una vez que haya hecho el pago?</h6>
+              <p class="text-justify lead">La entrega depende de la ubicación del compradory del tiempo de envío seleccioando. Normalmente tarda entre 1-3 días hábiles.</p>
+              <h6 class="text-left font-weight-bold">5. ¿Cómo puedo vender mi libro por Amoxtli?</h6>
+              <p class="text-justify lead">Es muy sencillo: debes crear tu cuenta dentro de la plataforma y llenar los formularios requeridos para la venta de un libro. De este modo, se publicará tu anuncio.</p>
+              <br>
+              <br> 
+              <p class=" text-center lead"><a href="{% url 'store:store-contact'%}" class="text-primary">¿Tienes otra pregunta?</a></p>
+        
+              
+        </div>
+       
+    </section>
+
+    
+
+{% endblock content %}

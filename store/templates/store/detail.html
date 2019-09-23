@@ -1,0 +1,124 @@
+{% extends "store/base.html" %}
+{% load static %}
+{% block content %}
+<section class="section-content bg padding-y fill-screen">
+    <div class="container">
+        <div class="row">
+            <aside class="col-xl-2 col-md-3 col-sm-12">
+                <div class="card lead mt-1">
+                    <div class="card-header">
+                        Información:
+                    </div>
+                    <div class="card-body small">
+                        <span>Vendido por: {{ book.publishedBy }}</span>
+                        <hr>
+                        Género: <br>
+                        <a href="{{book.genre.get_absolute_url}}">{{ book.genre }}</a>
+                        <hr>
+                        Materia: <br>
+                        <a href="{{book.subject.get_absolute_url}}">{{ book.subject }}</a> 
+                        <hr>
+                        Publicado el: <br>
+                        {{book.datePosted|date:"d/M/Y"}}
+                        <hr>
+                        {% if book.publishedBy == userProfile.user %}
+                            <a class="text-info" href="{% url 'store:book-update' book.id %}">Actualizar.</a> 
+                            <hr>
+                            <a class="text-danger" href="{% url 'store:book-delete' book.id %}">Eliminar.</a>
+                        {% endif %}
+                    </div> <!-- card-body.// -->
+                </div> <!-- card.// -->
+            </aside>
+            <div class="col-xl-10 col-md-9 col-sm-12">
+                <main class="card p-2">
+                    <div class="row no-gutters">
+                        <aside class="col-sm-6 border-right">
+                            <article class="gallery-wrap">
+                                <div class="img-big-wrap">
+                                    <div> <a href="{% if book.image %} {{ book.image.url }} {% else %} https://gdurl.com/akGF  {% endif %}"
+                                            data-fancybox=""><img
+                                                src="{% if book.image %} {{ book.image.url }} {% else %} https://gdurl.com/akGF  {% endif %}"
+                                                class="img-fluid"></a></div>
+                                </div> <!-- slider-product.// -->
+                            </article> <!-- gallery-wrap .end// -->
+                        </aside>
+                        <aside class="col-sm-6">
+                            <article class="card-body">
+                                <!-- short-info-wrap -->
+                                <h3 class="title mb-3">{{ book.title }}</h3>
+
+                                <div class="mb-3">
+                                    <var class="price h3 text-warning">
+                                        <span class="currency">MXN $</span><span class="num">{{ book.price }}</span>
+                                    </var>
+
+                                </div> <!-- price-detail-wrap .// -->
+                                <dl>
+                                    <dt>Descripción</dt>
+                                    <dd>
+                                        <p class="text-justify lead">{{book.description}} </p>
+                                    </dd>
+                                </dl>
+                                <dl class="row">
+                                    <dt class="col-sm-4">Autor(a):</dt>
+                                    <dd class="col-sm-8">{{ book.author }}</dd>
+
+                                    <dt class="col-sm-4">Editorial:</dt>
+                                    <dd class="col-sm-8">{{book.publisher}}</dd>
+
+                                    <dt class="col-sm-4">Calidad:</dt>
+                                    <dd class="col-sm-8">{{book.quality}}</dd>
+                                </dl>
+
+                                {% if book.publishedBy != userProfile.user %}
+                                    <a href="#" class="btn  btn-warning btn-block"> <i class="fa fa-heart"></i> Lo Deseo
+                                    </a>
+                                    <hr>
+                                    <form action="{% url 'cart:cart_add' book.id %}" method="post">
+                                            {% csrf_token %}
+                                            <input type="submit" value="Agregar a Carrito" class="btn btn-primary btn-block">
+                                    </form>
+                                {% else %}
+                                    <a href="{% url 'store:book-update' book.id %}" class="btn  btn-info">Actualizar</a>
+                                    <a href="{% url 'store:book-delete' book.id %}" class="btn  btn-warning">Eliminar</a>
+                                {% endif %}
+                                <!-- short-info-wrap .// -->
+                            </article> <!-- card-body.// -->
+                        </aside> <!-- col.// -->
+                    </div> <!-- row.// -->
+                </main> <!-- card.// -->
+
+                <h5 class="text-left display-4 pt-5">Más libros para ti</h5>
+                <div class="row-sm pb-3">
+
+                    {% for b in books|slice:"4" %}
+                    {% if b.id != book.id %}
+                    <div class="col-md-3 col-sm-6">
+                        <figure class="card card-product">
+                            <div class="img-wrap p-2"> <img
+                                    src="{% if b.image %} {{ b.image.url }} {% else %} https://gdurl.com/akGF  {% endif %}">
+                            </div>
+                            <figcaption class="info-wrap p-2">
+                                <a href="{{ b.get_absolute_url }}" class="title">{{b.title}}</a>
+                                <div class="price-wrap">
+                                    <span class="price-new">${{b.price}}</span>
+                                    <del class="price-old">${{b.getOldPrice}}</del>
+                                </div> <!-- price-wrap.// -->
+                            </figcaption>
+                        </figure> <!-- card // -->
+                    </div> <!-- col // -->
+                    {% endif %}
+                    {% endfor %}
+                </div>
+
+
+            </div> <!-- col // -->
+            
+
+
+
+        </div><!-- container // -->
+</section>
+        
+
+{% endblock content %}

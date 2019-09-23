@@ -1,0 +1,25 @@
+{% extends "users/user-base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <img src="https://gdurl.com/UJWj" class="img-fluid rounded mx-auto d-block" alt="Logo Amoxtli>
+    <div class="card">
+        <header class="card-header text-center">
+            <h4 class="card-title mt-2">Iniciar Sesión</h4>
+        </header>
+        <article class="card-body">
+            <form method="POST"> 
+                {% csrf_token %}
+                <fieldset class="form-group"> 
+                    {{ form|crispy }}
+                </fieldset>
+                <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block"> Iniciar Sesión</button>
+                </div> <!-- form-group// -->
+            </form>
+        </article> <!-- card-body end .// -->
+        <div class="border-top card-body text-center">¿No tienes cuenta? <a href="{% url 'register'%}">Crear Cuenta</a></div>
+    </div> <!-- card.// -->
+</div>
+{% endblock content %}
